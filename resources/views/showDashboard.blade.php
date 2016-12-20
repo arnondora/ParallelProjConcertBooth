@@ -21,16 +21,18 @@
         </tr>
 
         @foreach ($shows as $show)
-          <td><a href = "/show/{{$show->id}}/edit">{{$show->name}}</a></td>
-          <td>{{$show->description}}</td>
-          <td>
-            <form action = "/show/delete" method="post">
-              <input type = "hidden" name = "_method" value = "delete">
-              <input type="hidden" name="id" value="{{$show->id}}">
-              {{csrf_field()}}
-              <button class = "btn btn-danger" type="submit"><span class = "fa fa-trash"></span></button>
-            </form>
-          </td>
+          <tr>
+            <td><a href = "/show/{{$show->id}}/edit">{{$show->name}}</a></td>
+            <td>{{$show->description}}</td>
+            <td>
+              <form action = "/show/delete" method="post">
+                <input type = "hidden" name = "_method" value = "delete">
+                <input type="hidden" name="id" value="{{$show->id}}">
+                {{csrf_field()}}
+                <button class = "btn btn-danger" type="submit"><span class = "fa fa-trash"></span></button>
+              </form>
+            </td>
+          </tr>
         @endforeach
       </table>
       @else
