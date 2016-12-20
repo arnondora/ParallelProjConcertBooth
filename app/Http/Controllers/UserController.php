@@ -20,7 +20,7 @@ class UserController extends Controller
       $username = $request->username;
       $password = $request->password;
 
-      if (Auth::attempt(['username' => $username, 'password' => $password])) return redirect('/dashboard');
+      if (Auth::attempt(['username' => $username, 'password' => $password])) return redirect('/dashboard/ticket');
       else return redirect ("/login")->withInput()->withError(array('message' => 'Login Username and Password is incorrect. Please Try again'));
     }
 
