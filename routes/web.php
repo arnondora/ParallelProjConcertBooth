@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', ['middleware' => 'guest' , 'uses' => 'UserController@login']);
 
 Route::get('/login', ['middleware' => 'guest' , 'uses' => 'UserController@login']);
 Route::post('/login', 'UserController@doLogin');
