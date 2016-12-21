@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use DB;
+
 use App\Concert;
 
 use App\ConcertTime;
+
+use App\TicketType;
 
 class ShowtimeController extends Controller
 {
@@ -36,5 +40,20 @@ class ShowtimeController extends Controller
       {
         return redirect("/show/$request->showid/edit");
       }
+    }
+
+    public function availableTicket ($id)
+    {
+      $showtime = ConcertTime::find($id);
+      $ticketTypes = TicketType::get();
+
+      $availableTicket = array();
+
+      foreach ($ticketTypes as $ticketType)
+      {
+        $availableTicket[] = $ticketType->seat - count(DB::table('Ticket')->where('TypeID',$ticketType->id)->where('ConcertTimeID',$showtime->id)->get());
+      }
+
+      return view('showtime.showavailable',['showtime' => $showtime, 'seatTypes' => $ticketTypes, 'availableTicket' => $availableTicket]);
     }
 }
