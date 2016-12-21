@@ -25,12 +25,14 @@ class TicketTypeController extends Controller
         $this->validate($request,[
           'name' => 'required|unique:TicketType,name',
           'price' => 'required|numeric|min:0',
+          'seat' => 'required|numeric|min:1'
         ]);
 
         $type = new TicketType();
 
         $type->name = $request->name;
         $type->price = $request->price;
+        $type->seat = $request->seat;
 
         $type->save();
         return redirect('/ticket/type');

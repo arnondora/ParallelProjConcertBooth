@@ -19,6 +19,11 @@
       </div>
 
       <div class = "form-group">
+        <label>No of seat :</label>
+        <input type="number" min = "1" class = "form-control" name="seat" value="{{old('seat')}}" required="">
+      </div>
+
+      <div class = "form-group">
         {{csrf_field()}}
         <input type="submit" class = "btn btn-success" value="Add New Ticket Type">
       </div>
