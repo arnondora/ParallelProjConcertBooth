@@ -40,7 +40,7 @@
 
         @foreach ($show->ConcertTime()->get() as $showTime)
           <tr>
-            <td>{{$showTime->showDate}}</td>
+            <td><a href = "/show/{{$showTime->id}}/time">{{$showTime->showDate}}</a></td>
             <td>{{count($showTime->tickets()->get())}}</td>
           </tr>
         @endforeach
