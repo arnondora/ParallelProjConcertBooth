@@ -17,12 +17,14 @@
         <tr>
           <td>Name</td>
           <td>Price</td>
+          <td>No. of seat</td>
         </tr>
 
         @foreach ($ticketTypes as $type)
           <tr>
             <td>{{$type->name}}</td>
             <td>{{$type->price}}</td>
+            <td>{{$type->seat}}</td>
           </tr>
         @endforeach
       </table>
