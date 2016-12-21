@@ -25,8 +25,10 @@ Route::get('/show/add', ['middleware' => 'auth', 'uses' => 'ShowController@newSh
 Route::post('/show/add', ['middleware' => 'auth', 'uses' => 'ShowController@doNewShow']);
 Route::delete('/show/delete', ['middleware' => 'auth', 'uses' => 'ShowController@doDeleteShow']);
 Route::get('/show/{id}/edit', ['middleware' => 'auth', 'uses' => 'ShowController@editShow']);
+
 Route::get('/show/{id}/time/add', ['middleware' => 'auth', 'uses' => 'ShowtimeController@newShowtime']);
 Route::post('/show/time/add', ['middleware' => 'auth', 'uses' => 'ShowtimeController@doNewShowtime']);
+Route::get('/show/{id}/time', ['middleware' => 'auth', 'uses' => 'ShowtimeController@availableTicket']);
 
 Route::get('/ticket/add', ['middleware' => 'auth', 'uses' => 'TicketController@newTicket']);
 Route::post('/ticket/add', ['middleware' => 'auth', 'uses' => 'TicketController@doNewTicket']);
