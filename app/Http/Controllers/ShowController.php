@@ -67,12 +67,9 @@ class ShowController extends Controller
       $noShowTime = count($show->ConcertTime()->get());
       $noTicket = 0;
 
-      foreach ($show->ConcertTime() as $time)
+      foreach ($show->ConcertTime()->get() as $time)
       {
-        foreach ($time->tickets() as $ticket)
-        {
-          $noTicket++;
-        }
+        $noTicket += count($time->tickets()->get());
       }
 
       return view('show.info', ['show' => $show, 'noShowTime' => $noShowTime, 'noTicket' => $noTicket]);
